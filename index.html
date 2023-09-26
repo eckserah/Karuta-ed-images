@@ -21,8 +21,11 @@ color:white;
 <script>
 $(document).ready(function() {
 $('#submit').click(function() {
+	$('#imageText').children().remove();
 	var urlReg = /^(.+\/cards\/)(?:versioned\/)*(.+)\?*/g;
 	var urlInfo = $('#url').val();
+	if (urlInfo == "")
+		return;
 	urlParts = urlReg.exec(urlInfo);  
 	var charPart = urlParts[2];
   if (urlInfo.indexOf("versioned") > 0)

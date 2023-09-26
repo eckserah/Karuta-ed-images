@@ -21,7 +21,7 @@ color:white;
 <script>
 $(document).ready(function() {
 $('#submit').click(function() {
-	var urlReg = /(.+\/cards\/)(?:versioned\/)*(.+)\?/g;
+	var urlReg = /^(.+\/cards\/)(?:versioned\/)*(.+)\?*/g;
 	var urlInfo = $('#url').val();
 	urlParts = urlReg.exec(urlInfo);  
 	var charPart = urlParts[2];

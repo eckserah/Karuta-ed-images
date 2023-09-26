@@ -19,6 +19,7 @@ color:white;
 </style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+$(document).ready(function() {
 $('#submit').click(function() {
 	var urlReg = /(.+\/cards\/)(?:versioned\/)*(.+)\?/g;
 	var urlInfo = $('#url').val();
@@ -40,7 +41,7 @@ $('#submit').click(function() {
   $('#imageText').append(ed8);
   $('#imageText').append(ed9);
   $('#imageText').append(ed10);
-})
+})});
 </script>
 </head>
 <body>

@@ -22,7 +22,7 @@ color:white;
 $(document).ready(function() {
 $('#submit').click(function() {
 	$('#imageText').children().remove();
-	var urlReg = /^(.+\/cards\/)(?:versioned\/)*(.+)\?*/g;
+	var urlReg = /^(.+\/cards\/)(?:versioned\/)*(.+\.jpg)\?*/g;
 	var urlInfo = $('#url').val();
 	if (urlInfo == "")
 		return;

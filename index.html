@@ -50,7 +50,7 @@ $(document).ready(function() {
 });
 
 function checkCardName(name, series) {
-	var nameTest = name+"-"+series.replace(" ","-");
+	var nameTest = name.replace(" ","-")+"-"+series.replace(" ","-");
 	var nameTestOut = $.ajax(cardUrl+nameTest+"-1.jpg", {
 		success: function (data) {
 			alert("Image Found");

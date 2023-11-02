@@ -20,32 +20,46 @@ color:white;
 </style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+var cardUrl = "https://d2l56h9h5tj8ue.cloudfront.net/images/cards/";	
 $(document).ready(function() {
-$('#submit').click(function() {
-	$('#imageText').children().remove();
-	var urlReg = /^(.+\/cards\/)(?:versioned\/)*(.+\.jpg)\?*/g;
-	var urlInfo = $('#url').val();
-	if (urlInfo == "")
-		return;
-	urlParts = urlReg.exec(urlInfo);  
-	var charPart = urlParts[2];
-  if (urlInfo.indexOf("versioned") > 0)
-  	charPart = charPart.substring(0,charPart.length-7);
-  else
-  	charPart = charPart.substring(0,charPart.length-5);
-  var ed6 = $('<div class="container">').css('float','left').append($('<div>').text('ED6').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"6.jpg"));
-  var ed6alt = $('<div class="container">').css('float','left').append($('<div>').text('ED6Alt').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+"versioned/"+charPart+"6-1.jpg"));
-  var ed7 = $('<div class="container">').css('float','left').append($('<div>').text('ED7').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"7.jpg"));
-  var ed8 = $('<div class="container">').css('float','left').append($('<div>').text('ED8').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"8.jpg"));
-  var ed9 = $('<div class="container">').css('float','left').append($('<div>').text('ED9').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"9.jpg"));
-  var ed10 = $('<div class="container">').css('float','left').append($('<div>').text('ED10').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"10.jpg"));
-  $('#imageText').append(ed6);
-  $('#imageText').append(ed6alt);
-  $('#imageText').append(ed7);
-  $('#imageText').append(ed8);
-  $('#imageText').append(ed9);
-  $('#imageText').append(ed10);
-})});
+	$('#submit').click(function() {
+		$('#imageText').children().remove();
+		var urlReg = /^(.+\/cards\/)(?:versioned\/)*(.+\.jpg)\?*/g;
+		var urlInfo = $('#url').val();
+		if (urlInfo == "")
+			return;
+		urlParts = urlReg.exec(urlInfo);  
+		var charPart = urlParts[2];
+	  if (urlInfo.indexOf("versioned") > 0)
+		charPart = charPart.substring(0,charPart.length-7);
+	  else
+		charPart = charPart.substring(0,charPart.length-5);
+	  var ed6 = $('<div class="container">').css('float','left').append($('<div>').text('ED6').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"6.jpg"));
+	  var ed6alt = $('<div class="container">').css('float','left').append($('<div>').text('ED6Alt').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+"versioned/"+charPart+"6-1.jpg"));
+	  var ed7 = $('<div class="container">').css('float','left').append($('<div>').text('ED7').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"7.jpg"));
+	  var ed8 = $('<div class="container">').css('float','left').append($('<div>').text('ED8').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"8.jpg"));
+	  var ed9 = $('<div class="container">').css('float','left').append($('<div>').text('ED9').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"9.jpg"));
+	  var ed10 = $('<div class="container">').css('float','left').append($('<div>').text('ED10').css("text-align","center")).append($('<img>').attr("src", urlParts[1]+charPart+"10.jpg"));
+	  $('#imageText').append(ed6);
+	  $('#imageText').append(ed6alt);
+	  $('#imageText').append(ed7);
+	  $('#imageText').append(ed8);
+	  $('#imageText').append(ed9);
+	  $('#imageText').append(ed10);
+	})
+});
+
+function checkCardName(name, series) {
+	var nameTest = name+"-"+series.replace(" ","-");
+	var nameTestOut = $.ajax(cardUrl+nameTest+"1.jpg", {
+		success: function (data) {
+			alert("Image Found");
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	);
+}
 </script>
 </head>
 <body>
